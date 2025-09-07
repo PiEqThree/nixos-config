@@ -76,7 +76,7 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypteddata";
+                name = "crypted";
                 # disable settings.keyFile if you want to use interactive password entry
                 passwordFile = "/tmp/secret.key"; # Interactive
                 settings = {
@@ -88,8 +88,8 @@
                   type = "btrfs";
                   extraArgs = [ "-f" ];
                   subvolumes = {
-                    "/root" = {
-                      mountpoint = "/";
+                    "/data" = {
+                      mountpoint = "/data";
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
@@ -97,9 +97,11 @@
                     };
 		   };
 		  };
+		};
 	  };
 	};
       };
     };
+  };
   };
 }
